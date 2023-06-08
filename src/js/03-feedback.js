@@ -25,11 +25,9 @@ function onFormSubmit(e) {
 
 function pageReload() {
   const formElements = JSON.parse(localStorage.getItem(FEEDBACK_STORAGE_KEY));
-  const email = formElements.email;
-  const message = formElements.message;
 
-  if (email.value === '' || message.value === '') {
-    form.email = email.value;
-    form.message = message.value;
+  if (formElements) {
+    form.elements['email'].value = formElements.email;
+    form.elements['message'].value = formElements.message;
   }
 }
