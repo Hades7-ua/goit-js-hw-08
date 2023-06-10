@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle ';
 
 const FEEDBACK_STORAGE_KEY = 'feedback-form-state';
-const formData = {};
+let formData = {};
 
 const form = document.querySelector('.feedback-form');
 
@@ -12,8 +12,7 @@ pageReload();
 
 function onFormInput(e) {
   formData[e.target.name] = e.target.value;
-  const data = JSON.stringify(formData);
-  localStorage.setItem(FEEDBACK_STORAGE_KEY, data);
+  localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(formData));
 }
 
 function onFormSubmit(e) {
@@ -21,6 +20,7 @@ function onFormSubmit(e) {
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_STORAGE_KEY);
   console.log(formData);
+  formData = {};
 }
 
 function pageReload() {
