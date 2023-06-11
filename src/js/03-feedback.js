@@ -26,7 +26,7 @@ function onFormInput(e) {
 function onFormSubmit(e) {
   e.preventDefault();
 
-  //   const formData = {};
+  const formData = {};
 
   const formElements = e.currentTarget.elements;
   const email = formElements.email;
@@ -42,6 +42,8 @@ function onFormSubmit(e) {
   console.log(JSON.parse(localStorage.getItem(FEEDBACK_STORAGE_KEY)));
 
   e.currentTarget.reset();
+
+  localStorage.removeItem(FEEDBACK_STORAGE_KEY);
 }
 
 function pageReload() {
